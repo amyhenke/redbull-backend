@@ -3,6 +3,7 @@ import logger from "./middleware/logger.js";
 import cards from "./routes/cards.js";
 import errorHandler from "./middleware/error.js";
 import notFound from "./middleware/notFound.js";
+import cors from "cors";
 
 const PORT = process.env.PORT || 8000;
 
@@ -14,6 +15,13 @@ app.use(express.urlencoded({ extended: false }));
 
 // Logger middleware
 app.use(logger);
+
+// Allow Cross-Origin Resource Sharing (CORS) or can't fetch from backend
+app.use(
+    cors({
+        origin: "http://localhost:5173",
+    })
+);
 
 // Routes
 app.use("/api/cards", cards);

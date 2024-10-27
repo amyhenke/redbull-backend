@@ -7,11 +7,7 @@ const router = express.Router();
 
 // GET ALL CARDS
 router.get("/", (req, res) => {
-    // res.send("<h1>Hi</h1>");
-
     res.status(200).json(cardData);
-    // http://localhost:8000/api/cards
-    // returns: [{"id":1,"title":"Post One"},{"id":2,"title":"Post Two"},{"id":3,"title":"Post Three"}]
 });
 
 // GET SINGLE CARD
@@ -20,7 +16,7 @@ router.get("/:id", (req, res, next) => {
     const id = parseInt(req.params.id);
 
     // change to use ORM
-    const card = cards.find((card) => card.id === id);
+    const card = cardData.find((card) => card.id === id);
 
     // If post not found, use error handler
     if (!card) {
@@ -33,22 +29,22 @@ router.get("/:id", (req, res, next) => {
     res.status(200).json(card);
 });
 
-// // CREATE NEW POST
+// // CREATE NEW CARD
 // router.post("/", (req, res, next) => {
 //     // Access title from body
-//     const newPost = {
+//     const newCard = {
 //         id: cards.length + 1,
 //         title: req.body.title,
 //     };
 
 //     // If title hasn't been set in body, show error
-//     if (!newPost.title) {
+//     if (!newCard.title) {
 //         const error = new Error("Please include a title");
 //         error.status = 400;
 //         return next(error);
 //     }
 
-//     cards.push(newPost);
+//     cardData.push(newCard);
 
 //     // 201 created
 //     // Respond with cards - inc. newly created
