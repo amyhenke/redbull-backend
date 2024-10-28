@@ -1,33 +1,23 @@
 import express from "express";
-import { cardData } from "../lib/cardData.js";
+// import {
+//     getCards,
+//     getCard,
+//     getCardBySlug,
+// } from "../controllers/cardController.js";
+import { getCards, getCardBySlug } from "../controllers/cardController.js";
 
 const router = express.Router();
 
 // NOTE: all endpoints are prefixed with /api/cards (set in server.js)
 
 // GET ALL CARDS
-router.get("/", (req, res) => {
-    res.status(200).json(cardData);
-});
+router.get("/", getCards);
 
-// GET SINGLE CARD
-router.get("/:id", (req, res, next) => {
-    // Get ID from param, change from string
-    const id = parseInt(req.params.id);
+// GET SINGLE CARD BY ID
+// router.get("/:id", getCard);
 
-    // change to use ORM
-    const card = cardData.find((card) => card.id === id);
-
-    // If post not found, use error handler
-    if (!card) {
-        const error = new Error(`Card ID (${id}) Not Found`);
-        error.status = 404;
-        return next(error);
-    }
-
-    // If card found, pass the card
-    res.status(200).json(card);
-});
+// GET SINGLE CARD BY SLUG
+router.get("/:slug", getCardBySlug);
 
 // // CREATE NEW CARD
 // router.post("/", (req, res, next) => {
