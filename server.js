@@ -20,8 +20,8 @@ app.use(logger);
 app.use(
     cors({
         // origin: "http://localhost:5173",
-        // origin: "https://race-standings-dq9xyufwn-amyhenkes-projects.vercel.app",
-        origin: "https://race-standings.vercel.app/",
+        origin: "https://race-standings-dq9xyufwn-amyhenkes-projects.vercel.app",
+        // origin: "https://race-standings.vercel.app/",
     })
 );
 
