@@ -21,7 +21,7 @@ app.use(
     cors({
         // origin: "http://localhost:5173",
         // origin: "race-standings-e0573byr0-amyhenkes-projects.vercel.app",
-        origin: "https://race-standings.vercel.app/",
+        origin: "https://race-standings.vercel.app",
     })
 );
 
